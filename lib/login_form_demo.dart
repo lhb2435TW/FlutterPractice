@@ -1,47 +1,62 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 
-void main() => runApp(LoginFormDemo());
+void main() => runApp(const RowColumnDemo());
 
-class LoginFormDemo extends StatefulWidget {
-  const LoginFormDemo({Key? key}) : super(key: key);
-
-  @override
-  State createState() => LoginFormDemoState();
-}
-
-class LoginFormDemoState extends State<LoginFormDemo> {
-  static const String _title = "로그인 폼 데모";
-  late String _id;
-  late String _pw;
-
-  void onChangeText() {
-    setState(() {
-
-    });
-  }
+class RowColumnDemo extends StatelessWidget {
+  const RowColumnDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: 'Login Form',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                  border: Border.all(color: Colors.black),
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          padding: const EdgeInsets.fromLTRB(20, 120, 20, 120),
+          child: Column(
+            children: <Widget>[
+              Hero(
+                  tag: 'heoro',
+                  child: CircleAvatar(
+                    child: Image.asset('assets/Lenna.png'),
+                    backgroundColor: Colors.transparent,
+                    radius: 58.0,
+              )),
+              const SizedBox(height: 45.0),
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                initialValue: 'your_name@gmail.com',
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder()
+                ),
               ),
-              height: 100.0,
-              margin: const EdgeInsets.only(left: 20, top: 20, bottom: 20, right: 20),
-              child: TextField(
-
+              const SizedBox(height: 15.0),
+              TextFormField(
+                initialValue: 'input password',
+                obscureText: true,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder()
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const ElevatedButton(
+                    child: Text('Log In'),
+                    onPressed: null,
+                  ),
+                  const SizedBox(width: 10.0,),
+                  ElevatedButton(
+                    child: const Text('Cancel'),
+                      onPressed: () { exit(0); }
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
