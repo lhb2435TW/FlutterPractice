@@ -32,7 +32,7 @@ class LocationPageState extends State<LocationPage> {
 
     String _newText;
     try {
-      Position position = await Geolocator().getCurrentPosition(desiredAccuracy:
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy:
       LocationAccuracy.best);
       String result = "(${position.latitude}, ${position.longitude})";
       _newText = '현재 위치는 $result';

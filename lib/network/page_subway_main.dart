@@ -48,7 +48,7 @@ class MainPageState extends State<MainPage> {
   }
 
   _httpGet(String url) async {
-    var response = await http.get(_buldUrl(_defaultStation));
+    var response = await http.get(Uri.parse(_buldUrl(_defaultStation)));
     String responseBody = response.body;
     print('res >> $responseBody');
 

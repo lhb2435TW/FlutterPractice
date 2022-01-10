@@ -84,7 +84,7 @@ class MainPageState extends State<MainPage> {
     setState(() => _isLoading = true);
 
     String station = _stationController.text;
-    var response = await http.get(api.buldUrl(station));
+    var response = await http.get(Uri.parse(api.buldUrl(station)));
     String responseBody = response.body;
     print('res >> $responseBody');
 
