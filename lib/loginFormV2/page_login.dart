@@ -33,7 +33,7 @@ class LoginPageState extends State<LoginPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        padding: EdgeInsets.fromLTRB(20, 120, 20, 120),
+        padding: const EdgeInsets.fromLTRB(20, 120, 20, 120),
         child: Column(
           children: <Widget>[
             Hero(
@@ -43,29 +43,32 @@ class LoginPageState extends State<LoginPage> {
                 backgroundColor: Colors.transparent,
                 radius: 58.0,
               )),
-            SizedBox(height: 45.0),
+            const SizedBox(height: 45.0),
             TextFormField(
+              key: const Key("email"),
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
               controller: _emailController,
             ),
-            SizedBox(height: 15.0),
+            const SizedBox(height: 15.0),
             TextFormField(
+              key: const Key("password"),
               obscureText: true,
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: const InputDecoration(border: const OutlineInputBorder()),
               controller: _passwordController,
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 ElevatedButton(
-                  child: Text('Log In'),
+                  key: Key('login'),
+                  child: const Text('로그인'),
                   onPressed: () => _onLogin(context)
                 ),
-                SizedBox(width: 10.0),
+                const SizedBox(width: 10.0),
                 ElevatedButton(
-                  child: Text('Cancel'),
+                  child: const Text('취소'),
                   onPressed: _onCancel,
                 ),
               ],
